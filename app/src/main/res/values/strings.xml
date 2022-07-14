@@ -1,12 +1,23 @@
 <resources>
     <string name="app_name">BarbellWeightCalculator</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- General Strings -->
+    <string name="pounds_short">lbs</string>
+    <string name="kilos_short">kgs</string>
+
+    <!-- Strings used for User Input Fragment -->
+    <string name="user_input_fragment_label">User Input Fragment</string>
+
+    <string name="user_input_form_label">Input Weight Here</string>
+    <string name="weight">Weight</string>
+    <string name="converting_to_kgs">You are currently converting to kgs</string>
+    <string name="converting_to_lbs">You are currently converting to lbs</string>
+    <string name="user_input_button">Convert</string>
+
+    <!-- Strings used for App Output Fragment -->
+    <string name="app_output_fragment_label">App Output Fragment</string>
+
+    <string name="go_back">Go Back</string>
+
 </resources>
