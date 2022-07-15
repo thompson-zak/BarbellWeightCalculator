@@ -12,7 +12,7 @@
         tools:layout="@layout/user_input_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_UserInput_to_AppOutput"
             app:destination="@id/AppOutputFragment" />
     </fragment>
     <fragment
@@ -21,8 +21,13 @@
         android:label="@string/app_output_fragment_label"
         tools:layout="@layout/app_output_fragment">
 
+        <argument
+            android:name="weightToBeConverted"
+            app:argType="integer"
+            android:defaultValue="0" />
+
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_AppOutput_to_UserInput"
             app:destination="@id/UserInputFragment" />
     </fragment>
     <!-- Add navigation from User Input Fragment to Settings, and back -->

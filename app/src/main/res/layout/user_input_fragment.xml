@@ -10,13 +10,13 @@
         android:id="@+id/button_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="42dp"
         android:layout_marginBottom="324dp"
         android:text="@string/user_input_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/conversion_label" />
 
     <TextView
         android:id="@+id/user_input_label"
@@ -37,7 +37,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="48dp"
         android:ems="10"
-        android:inputType="textShortMessage|number|textPersonName"
+        android:inputType="number"
         android:text="@string/weight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_input_label" />
@@ -50,7 +50,8 @@
         android:layout_marginTop="198dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toEndOf="@+id/input_weight_form"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:checkedButton="@id/lbs_radio_original">
 
         <RadioButton
             android:id="@+id/lbs_radio_original"
@@ -69,7 +70,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/conversion_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="97dp"
