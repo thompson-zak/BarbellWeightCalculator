@@ -55,11 +55,11 @@ class UserInputFragment : Fragment() {
 
             val radioGroup = view.findViewById(R.id.weight_selection_radio_original) as RadioGroup
             val selectedRadioBtn = view.findViewById(radioGroup.checkedRadioButtonId) as RadioButton
-            val unitOfWeight = selectedRadioBtn.text.toString()
+            val unit = selectedRadioBtn.text.toString()
 
             val bundle = Bundle()
             bundle.putInt("weight", conversionWeight)
-            bundle.putString("unit", unitOfWeight)
+            bundle.putString("unit", unit)
             findNavController().navigate(R.id.action_UserInput_to_AppOutput, bundle)
         }
     }

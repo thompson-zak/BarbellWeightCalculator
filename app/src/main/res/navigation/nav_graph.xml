@@ -22,9 +22,14 @@
         tools:layout="@layout/app_output_fragment">
 
         <argument
-            android:name="weightToBeConverted"
+            android:name="weight"
             app:argType="integer"
             android:defaultValue="0" />
+
+        <argument
+            android:name="unit"
+            app:argType="string"
+            android:defaultValue="kg" />
 
         <action
             android:id="@+id/action_AppOutput_to_UserInput"

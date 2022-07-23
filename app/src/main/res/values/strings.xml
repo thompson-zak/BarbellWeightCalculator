@@ -18,6 +18,8 @@
     <!-- Strings used for App Output Fragment -->
     <string name="app_output_fragment_label">App Output Fragment</string>
 
+    <string name="app_output_title">Your Barbell Configuration!</string>
+
     <string name="go_back">Go Back</string>
 
 </resources>
