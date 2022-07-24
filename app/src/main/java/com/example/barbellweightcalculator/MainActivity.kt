@@ -1,5 +1,6 @@
 package com.example.barbellweightcalculator
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -26,6 +27,20 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val sharedPreferences : SharedPreferences  = getSharedPreferences("Barbell", 0)
+        // Populate with default values if empty
+        if(sharedPreferences.all.isEmpty()) {
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putBoolean("25kg", true)
+            editor.putBoolean("20kg", true)
+            editor.putBoolean("15kg", true)
+            editor.putBoolean("10kg", true)
+            editor.putBoolean("5kg", true)
+            editor.putBoolean("2_5kg", true)
+            editor.putBoolean("1_2_5kg", true)
+            editor.commit()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

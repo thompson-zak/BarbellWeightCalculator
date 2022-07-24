@@ -59,8 +59,6 @@ class AppOutputFragment : Fragment() {
                 "lbs"
             }
 
-            Log.v(TAG, "Weight passed to this fragment is: $weight $unit")
-
             val convertedWeightAndUnit : TextView = view.findViewById(R.id.converted_weight_and_unit) as TextView
             convertedWeightAndUnit.text = "$weight $unit --> $convertedWeight $convertedUnit"
             convertedWeightAndUnit.invalidate()

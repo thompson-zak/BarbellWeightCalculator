@@ -25,4 +25,12 @@
     <!-- Strings used for Settings Fragment -->
     <string name="settings_fragment_label">Settings fragment</string>
 
+    <string name="kg_25">25kg</string>
+    <string name="kg_20">20kg</string>
+    <string name="kg_15">15kg</string>
+    <string name="kg_10">10kg</string>
+    <string name="kg_5">5kg</string>
+    <string name="kg_2_5">2.5kg</string>
+    <string name="kg_1_2_5">1.25kg</string>
+
 </resources>
