@@ -34,7 +34,7 @@
         android:id="@+id/input_weight_form"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="@string/weight"
@@ -60,12 +60,6 @@
             android:text="@string/pounds_short"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <RadioButton
-            android:id="@+id/kgs_radio_original"
-            android:layout_width="62dp"
-            android:layout_height="60dp"
-            android:text="@string/kilos_short" />
 
     </RadioGroup>
 
