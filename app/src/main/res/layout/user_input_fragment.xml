@@ -11,9 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
-        android:layout_marginBottom="324dp"
         android:text="@string/user_input_button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/conversion_label" />
@@ -22,11 +20,11 @@
         android:id="@+id/user_input_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
         android:layout_marginTop="116dp"
         android:text="@string/user_input_form_label"
         android:textSize="10pt"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,11 +32,11 @@
         android:id="@+id/input_weight_form"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginStart="68dp"
         android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="@string/weight"
         android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_input_label" />
 
@@ -46,12 +44,12 @@
         android:id="@+id/weight_selection_radio_original"
         android:layout_width="126dp"
         android:layout_height="60dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="198dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="192dp"
+        android:checkedButton="@id/lbs_radio_original"
         android:orientation="horizontal"
         app:layout_constraintStart_toEndOf="@+id/input_weight_form"
-        app:layout_constraintTop_toTopOf="parent"
-        android:checkedButton="@id/lbs_radio_original">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/lbs_radio_original"
@@ -67,9 +65,9 @@
         android:id="@+id/conversion_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="97dp"
         android:layout_marginTop="42dp"
         android:text="@string/converting_to_kgs"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_weight_form" />
 
