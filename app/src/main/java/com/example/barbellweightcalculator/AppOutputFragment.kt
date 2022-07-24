@@ -122,16 +122,16 @@ class AppOutputFragment : Fragment() {
                 val numPlates = barbellList[i]
                 val plateColor = getPlateColor(i)
                 val plateHeight = getPlateHeight(i)
-                val layoutParams = ConstraintLayout.LayoutParams(8, plateHeight)
+                //val layoutParams = ConstraintLayout.LayoutParams(8, plateHeight)
                 // Plates will only get smaller than max 125, so take the difference and add to default 68 margin
-                layoutParams.topMargin = 68 + (125-plateHeight)
+                //layoutParams.topMargin = 68 + (125-plateHeight)
                 for(j in plateIndex until (plateIndex+numPlates)) {
-                    val plateId = "plate_$plateIndex"
+                    val plateId = "plate_$j"
                     val plateViewId = resources.getIdentifier(plateId, "id", requireContext().packageName)
                     val plateView = view.findViewById(plateViewId) as View
 
                     requireActivity().runOnUiThread {
-                        plateView.layoutParams = layoutParams
+                        //plateView.layoutParams = layoutParams
                         plateView.setBackgroundColor(Color.parseColor(plateColor))
                         plateView.visibility = View.VISIBLE
                         plateView.postInvalidate()
