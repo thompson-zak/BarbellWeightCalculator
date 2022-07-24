@@ -3,6 +3,7 @@ package com.example.barbellweightcalculator
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.barbellweightcalculator.databinding.AppOutputFragmentBinding
+import org.w3c.dom.Text
+import java.lang.StringBuilder
 import kotlin.math.floor
 import kotlin.math.roundToInt
 
@@ -118,8 +121,13 @@ class AppOutputFragment : Fragment() {
             Log.v("AppOutput", barbellList.toString())
 
             var plateIndex = 1
+            var platesNeededTextBuilder = StringBuilder()
             for(i in 0..6) {
                 val numPlates = barbellList[i]
+                if(numPlates > 0) {
+                    val platesText = getPlatesText(i)
+                    platesNeededTextBuilder.append("<b>$numPlates</b> $platesText<br>")
+                }
                 val plateColor = getPlateColor(i)
                 val plateHeight = getPlateHeight(i)
                 val dpToPixelFactor = requireContext().resources.displayMetrics.density
@@ -142,6 +150,24 @@ class AppOutputFragment : Fragment() {
                     }
                 }
                 plateIndex += numPlates
+            }
+
+            val platesNeededTextView = view.findViewById(R.id.platesNeeded) as TextView
+            platesNeededTextView.text = Html.fromHtml(platesNeededTextBuilder.toString())
+        }
+    }
+
+    private fun getPlatesText(plateIndex: Int) : String {
+        return when (plateIndex) {
+            0 -> "25kg"
+            1 -> "20kg"
+            2 -> "15kg"
+            3 -> "10kg"
+            4 -> "5kg"
+            5 -> "2.5kg"
+            6 -> "1.25kg"
+            else -> {
+                "#FF0000"
             }
         }
     }
