@@ -122,16 +122,20 @@ class AppOutputFragment : Fragment() {
                 val numPlates = barbellList[i]
                 val plateColor = getPlateColor(i)
                 val plateHeight = getPlateHeight(i)
-                //val layoutParams = ConstraintLayout.LayoutParams(8, plateHeight)
-                // Plates will only get smaller than max 125, so take the difference and add to default 68 margin
-                //layoutParams.topMargin = 68 + (125-plateHeight)
+                val dpToPixelFactor = requireContext().resources.displayMetrics.density
+                val width = (8 * dpToPixelFactor).toInt()
+                val height = (plateHeight * dpToPixelFactor).toInt()
                 for(j in plateIndex until (plateIndex+numPlates)) {
                     val plateId = "plate_$j"
                     val plateViewId = resources.getIdentifier(plateId, "id", requireContext().packageName)
                     val plateView = view.findViewById(plateViewId) as View
 
                     requireActivity().runOnUiThread {
-                        //plateView.layoutParams = layoutParams
+                        val layoutParams = plateView.layoutParams as ConstraintLayout.LayoutParams
+                        layoutParams.topMargin = ((68 + ((125 - plateHeight)/2)) * dpToPixelFactor).toInt()
+                        layoutParams.width = width
+                        layoutParams.height = height
+                        plateView.layoutParams = layoutParams
                         plateView.setBackgroundColor(Color.parseColor(plateColor))
                         plateView.visibility = View.VISIBLE
                         plateView.postInvalidate()
@@ -163,11 +167,11 @@ class AppOutputFragment : Fragment() {
         return when (plateIndex) {
             0 -> 125 //25kg
             1 -> 125 //20kg
-            2 -> 100 //15kg
-            3 -> 75  //10kg
-            4 -> 45  //5kg
-            5 -> 30  //2.5kg
-            6 -> 15  //1.25kg
+            2 -> 110 //15kg
+            3 -> 90  //10kg
+            4 -> 65  //5kg
+            5 -> 55  //2.5kg
+            6 -> 40  //1.25kg
             else -> {
                 125
             }
