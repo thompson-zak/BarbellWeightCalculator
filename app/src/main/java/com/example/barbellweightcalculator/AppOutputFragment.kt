@@ -1,5 +1,6 @@
 package com.example.barbellweightcalculator
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.barbellweightcalculator.databinding.AppOutputFragmentBinding
+import kotlin.math.floor
 import kotlin.math.roundToInt
 
 /**
@@ -21,8 +23,6 @@ class AppOutputFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-    private val TAG = "AppOutputFragment"
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +37,10 @@ class AppOutputFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var weight = 0
-        var unit = "lbs"
-
         if(arguments != null) {
             val inputBundle = AppOutputFragmentArgs.fromBundle(requireArguments())
-            weight = inputBundle.weight
-            unit = inputBundle.unit
+            val weight = inputBundle.weight
+            val unit = inputBundle.unit
 
             val conversionNumber = 2.205
             //If number is given as lbs, divide by. If number is given as kgs, multiply by.
@@ -63,6 +60,41 @@ class AppOutputFragment : Fragment() {
             convertedWeightAndUnit.text = "$weight $unit --> $convertedWeight $convertedUnit"
             convertedWeightAndUnit.invalidate()
             convertedWeightAndUnit.requestLayout()
+
+            val barbellMap : HashMap<String, Int> = HashMap()
+            val sharedPreferences : SharedPreferences = requireContext().getSharedPreferences("Barbell", 0)
+            // Initially remove weight of bar from converted weight, then halve it since this is per side
+            var tempWeight = (convertedWeight - 20)/2.0
+            if (sharedPreferences.getBoolean("25kg", true)) {
+                barbellMap.put("25kg", floor(tempWeight/25.0).toInt())
+                tempWeight %= 25
+            }
+            if (sharedPreferences.getBoolean("20kg", true)) {
+                barbellMap.put("20kg", floor(tempWeight/20.0).toInt())
+                tempWeight %= 20
+            }
+            if (sharedPreferences.getBoolean("15kg", true)) {
+                barbellMap.put("15kg", floor(tempWeight/15.0).toInt())
+                tempWeight %= 15
+            }
+            if (sharedPreferences.getBoolean("10kg", true)) {
+                barbellMap.put("10kg", floor(tempWeight/10.0).toInt())
+                tempWeight %= 10
+            }
+            if (sharedPreferences.getBoolean("5kg", true)) {
+                barbellMap.put("5kg", floor(tempWeight/5.0).toInt())
+                tempWeight %= 5
+            }
+            if (sharedPreferences.getBoolean("2_5kg", true)) {
+                barbellMap.put("2_5kg", floor(tempWeight/2.5).toInt())
+                tempWeight %= 2.5
+            }
+            if (sharedPreferences.getBoolean("1_2_5kg", true)) {
+                barbellMap.put("1_2_5kg", floor(tempWeight/1.25).toInt())
+                tempWeight %= 1.25
+            }
+
+            Log.v("AppOutput", barbellMap.toString())
         }
     }
 
