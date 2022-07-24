@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppOutputFragment">
+
+    <TextView
+        android:id="@+id/app_output_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="88dp"
+        android:text="@string/app_output_title"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/converted_weight_and_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="29dp"
+        android:text="0 lbs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_output_title" />
+
+    <View
+        android:id="@+id/barbell"
+        android:layout_width="280dp"
+        android:layout_height="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="126dp"
+        android:background="#A9A9A9"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/barbell_collar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="116dp"
+        android:background="#A9A9A9"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_1"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_2"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_3"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_4"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_5"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_6"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_7"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_8"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_9"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_10"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_11"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <View
+        android:id="@+id/plate_12"
+        android:layout_width="8dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="68dp"
+        android:background="#FF0000"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/converted_weight_and_unit" />
+
+    <TextView
+        android:id="@+id/platesNeeded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="420dp"
+        android:textSize="8pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,36 @@
 <resources>
-    <string name="app_name">Barbell Weight Calculator</string>
-    <string name="title_activity_plates">Plates</string>
+    <string name="app_name">BarbellWeightCalculator</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- General Strings -->
+    <string name="pounds_short">lbs</string>
+    <string name="kilos_short">kgs</string>
+
+    <!-- Strings used for User Input Fragment -->
+    <string name="user_input_fragment_label">User Input Fragment</string>
+
+    <string name="user_input_form_label">Input Weight Here</string>
+    <string name="weight">Weight</string>
+    <string name="converting_to_kgs">You are currently converting to kgs</string>
+    <string name="converting_to_lbs">You are currently converting to lbs</string>
+    <string name="user_input_button">Convert</string>
+
+    <!-- Strings used for App Output Fragment -->
+    <string name="app_output_fragment_label">App Output Fragment</string>
+
+    <string name="app_output_title">Your Barbell Configuration!</string>
+
+    <string name="go_back">Go Back</string>
+
+    <!-- Strings used for Settings Fragment -->
+    <string name="settings_fragment_label">Settings fragment</string>
+
+    <string name="kg_25">25kg</string>
+    <string name="kg_20">20kg</string>
+    <string name="kg_15">15kg</string>
+    <string name="kg_10">10kg</string>
+    <string name="kg_5">5kg</string>
+    <string name="kg_2_5">2.5kg</string>
+    <string name="kg_1_2_5">1.25kg</string>
+
 </resources>
