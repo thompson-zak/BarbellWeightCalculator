@@ -22,4 +22,7 @@
 
     <string name="go_back">Go Back</string>
 
+    <!-- Strings used for Settings Fragment -->
+    <string name="settings_fragment_label">Settings fragment</string>
+
 </resources>
