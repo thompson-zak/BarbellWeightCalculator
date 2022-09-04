@@ -47,12 +47,12 @@ class AppOutputFragment : Fragment() {
             val unit = inputBundle.unit
 
             val conversionNumber = 2.205
-            //If number is given as lbs, divide by. If number is given as kgs, multiply by.
+            //If number is given as lbs, divide by. If number is given as kgs, multiply by. Round to nearest 2.5
             val isPounds = unit.contains("lbs")
             val convertedWeight = if (isPounds) {
-                (weight/conversionNumber).roundToInt()
+                Math.round((weight/conversionNumber) * .4) / .4
             } else {
-                (weight*conversionNumber).roundToInt()
+                Math.round((weight*conversionNumber) * .4) / .4
             }
             val convertedUnit = if (isPounds) {
                 "kgs"
@@ -60,8 +60,9 @@ class AppOutputFragment : Fragment() {
                 "lbs"
             }
 
+
+
             val convertedWeightAndUnit : TextView = view.findViewById(R.id.converted_weight_and_unit) as TextView
-            convertedWeightAndUnit.text = "$weight $unit --> $convertedWeight $convertedUnit"
 
             // Barbell list is an ordered list of plate amounts to be used 25kg -> 1.25kg
             val barbellList : ArrayList<Int> = ArrayList()
@@ -122,12 +123,18 @@ class AppOutputFragment : Fragment() {
 
             var plateIndex = 1
             var platesNeededTextBuilder = StringBuilder()
+            var barbellWeight = 20.0
             for(i in 0..6) {
                 val numPlates = barbellList[i]
                 if(numPlates > 0) {
                     val platesText = getPlatesText(i)
                     platesNeededTextBuilder.append("<b>$numPlates</b> $platesText<br>")
                 }
+
+                val individualPlateWeight = getPlatesWeight(i)
+                val platesWeight = individualPlateWeight * (numPlates * 2.0)
+                barbellWeight += platesWeight
+
                 val plateColor = getPlateColor(i)
                 val plateHeight = getPlateHeight(i)
                 val dpToPixelFactor = requireContext().resources.displayMetrics.density
@@ -152,8 +159,26 @@ class AppOutputFragment : Fragment() {
                 plateIndex += numPlates
             }
 
+            barbellWeight = Math.round( (barbellWeight * .4) ) / .4
+            convertedWeightAndUnit.text = "$weight $unit --> $barbellWeight $convertedUnit"
+
             val platesNeededTextView = view.findViewById(R.id.platesNeeded) as TextView
             platesNeededTextView.text = Html.fromHtml(platesNeededTextBuilder.toString())
+        }
+    }
+
+    private fun getPlatesWeight(plateIndex: Int) : Double {
+        return when (plateIndex) {
+            0 -> 25.0
+            1 -> 20.0
+            2 -> 15.0
+            3 -> 10.0
+            4 -> 5.0
+            5 -> 2.5
+            6 -> 1.2
+            else -> {
+                25.0
+            }
         }
     }
 
@@ -167,7 +192,7 @@ class AppOutputFragment : Fragment() {
             5 -> "2.5kg"
             6 -> "1.25kg"
             else -> {
-                "#FF0000"
+                "25kg"
             }
         }
     }
