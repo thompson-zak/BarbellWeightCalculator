@@ -32,5 +32,6 @@
     <string name="kg_5">5kg</string>
     <string name="kg_2_5">2.5kg</string>
     <string name="kg_1_2_5">1.25kg</string>
+    <string name="calibrated_collars">Calibrated Collars</string>
 
 </resources>

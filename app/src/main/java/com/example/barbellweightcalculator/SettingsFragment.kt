@@ -42,6 +42,7 @@ class SettingsFragment : Fragment() {
         view.findViewById<CheckBox>(R.id.checkBox5kg).setChecked(sharedPreferences.getBoolean("5kg", true))
         view.findViewById<CheckBox>(R.id.checkBox2_5kg).setChecked(sharedPreferences.getBoolean("2_5kg", true))
         view.findViewById<CheckBox>(R.id.checkBox1_2_5kg).setChecked(sharedPreferences.getBoolean("1_2_5kg", true))
+        view.findViewById<CheckBox>(R.id.checkBoxCollar).setChecked(sharedPreferences.getBoolean("calibrated_collars", false))
 
         val editor : SharedPreferences.Editor = sharedPreferences.edit()
         view.findViewById<CheckBox>(R.id.checkBox25kg).setOnCheckedChangeListener { _, isChecked ->
@@ -70,6 +71,10 @@ class SettingsFragment : Fragment() {
         }
         view.findViewById<CheckBox>(R.id.checkBox1_2_5kg).setOnCheckedChangeListener { _, isChecked ->
             editor.putBoolean("1_2_5kg", isChecked)
+            editor.commit()
+        }
+        view.findViewById<CheckBox>(R.id.checkBoxCollar).setOnCheckedChangeListener { _, isChecked ->
+            editor.putBoolean("calibrated_collars", isChecked)
             editor.commit()
         }
     }

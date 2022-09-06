@@ -70,6 +70,11 @@ class AppOutputFragment : Fragment() {
             // Initially remove weight of bar from converted weight, then halve it since this is per side
             var tempWeight = (convertedWeight - 20)/2.0
 
+            // Check if competition collars will be used. If so, remove 2.5 from weight as each collar weighs 2.5kg
+            if (sharedPreferences.getBoolean("calibrated_collars", false)) {
+                tempWeight -= 2.5
+            }
+
             if (sharedPreferences.getBoolean("25kg", true)) {
                 barbellList.add(floor(tempWeight/25.0).toInt())
                 tempWeight %= 25
@@ -119,12 +124,18 @@ class AppOutputFragment : Fragment() {
                 barbellList.add(0)
             }
 
+            if (sharedPreferences.getBoolean("calibrated_collars", false)) {
+                barbellList.add(1)
+            } else {
+                barbellList.add(0)
+            }
+
             Log.v("AppOutput", barbellList.toString())
 
             var plateIndex = 1
             var platesNeededTextBuilder = StringBuilder()
             var barbellWeight = 20.0
-            for(i in 0..6) {
+            for(i in 0..7) {
                 val numPlates = barbellList[i]
                 if(numPlates > 0) {
                     val platesText = getPlatesText(i)
@@ -138,7 +149,12 @@ class AppOutputFragment : Fragment() {
                 val plateColor = getPlateColor(i)
                 val plateHeight = getPlateHeight(i)
                 val dpToPixelFactor = requireContext().resources.displayMetrics.density
-                val width = (8 * dpToPixelFactor).toInt()
+                val width = if( i != 7 ) {
+                    (8 * dpToPixelFactor).toInt()
+                } else {
+                    // Double width to transform "plate" to "collar"
+                    (16 * dpToPixelFactor).toInt()
+                }
                 val height = (plateHeight * dpToPixelFactor).toInt()
                 for(j in plateIndex until (plateIndex+numPlates)) {
                     val plateId = "plate_$j"
@@ -175,7 +191,8 @@ class AppOutputFragment : Fragment() {
             3 -> 10.0
             4 -> 5.0
             5 -> 2.5
-            6 -> 1.2
+            6 -> 1.25
+            7 -> 2.5
             else -> {
                 25.0
             }
@@ -191,6 +208,7 @@ class AppOutputFragment : Fragment() {
             4 -> "5kg"
             5 -> "2.5kg"
             6 -> "1.25kg"
+            7 -> "Collar"
             else -> {
                 "25kg"
             }
@@ -207,6 +225,7 @@ class AppOutputFragment : Fragment() {
             4 -> "#000000" //5kg
             5 -> "#000000" //2.5kg
             6 -> "#000000" //1.25kg
+            7 -> "#D8D8D8" //Collar
             else -> {
                 "#FF0000"
             }
@@ -223,6 +242,7 @@ class AppOutputFragment : Fragment() {
             4 -> 65  //5kg
             5 -> 55  //2.5kg
             6 -> 40  //1.25kg
+            7 -> 30  //Collar
             else -> {
                 125
             }

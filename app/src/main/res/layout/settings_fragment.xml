@@ -81,4 +81,13 @@
         android:text="@string/kg_1_2_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox2_5kg" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCollar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:text="@string/calibrated_collars"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox1_2_5kg" />
 </androidx.constraintlayout.widget.ConstraintLayout>
