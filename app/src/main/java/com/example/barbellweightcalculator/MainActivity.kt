@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             editor.putBoolean("5kg", true)
             editor.putBoolean("2_5kg", true)
             editor.putBoolean("1_2_5kg", true)
+            editor.putBoolean("calibrated_collars", false)
             editor.commit()
         }
     }
