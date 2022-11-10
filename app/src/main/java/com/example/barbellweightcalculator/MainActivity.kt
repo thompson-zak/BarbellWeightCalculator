@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         val sharedPreferences : SharedPreferences  = getSharedPreferences("Barbell", 0)
-        // Populate with default values if empty
+        // Populate plate settings with default values if empty
         if(sharedPreferences.all.isEmpty()) {
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
             editor.putBoolean("25kg", true)

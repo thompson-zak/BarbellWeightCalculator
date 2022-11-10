@@ -18,7 +18,7 @@ import kotlin.math.floor
 import kotlin.math.roundToInt
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * A [Fragment] used to display the output of the weight conversion to the user
  */
 class AppOutputFragment : Fragment() {
 
@@ -49,6 +49,7 @@ class AppOutputFragment : Fragment() {
             val conversionNumber = 2.205
             //If number is given as lbs, divide by. If number is given as kgs, multiply by. Round to nearest 2.5
             val isPounds = unit.contains("lbs")
+            //Slightly hacky way to round closest .5
             val convertedWeight = if (isPounds) {
                 Math.round((weight/conversionNumber) * .4) / .4
             } else {
@@ -60,75 +61,8 @@ class AppOutputFragment : Fragment() {
                 "lbs"
             }
 
-
-
             val convertedWeightAndUnit : TextView = view.findViewById(R.id.converted_weight_and_unit) as TextView
-
-            // Barbell list is an ordered list of plate amounts to be used 25kg -> 1.25kg
-            val barbellList : ArrayList<Int> = ArrayList()
-            val sharedPreferences : SharedPreferences = requireContext().getSharedPreferences("Barbell", 0)
-            // Initially remove weight of bar from converted weight, then halve it since this is per side
-            var tempWeight = (convertedWeight - 20)/2.0
-
-            // Check if competition collars will be used. If so, remove 2.5 from weight as each collar weighs 2.5kg
-            if (sharedPreferences.getBoolean("calibrated_collars", false)) {
-                tempWeight -= 2.5
-            }
-
-            if (sharedPreferences.getBoolean("25kg", true)) {
-                barbellList.add(floor(tempWeight/25.0).toInt())
-                tempWeight %= 25
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("20kg", true)) {
-                barbellList.add(floor(tempWeight/20.0).toInt())
-                tempWeight %= 20
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("15kg", true)) {
-                barbellList.add(floor(tempWeight/15.0).toInt())
-                tempWeight %= 15
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("10kg", true)) {
-                barbellList.add(floor(tempWeight/10.0).toInt())
-                tempWeight %= 10
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("5kg", true)) {
-                barbellList.add(floor(tempWeight/5.0).toInt())
-                tempWeight %= 5
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("2_5kg", true)) {
-                barbellList.add(floor(tempWeight/2.5).toInt())
-                tempWeight %= 2.5
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("1_2_5kg", true)) {
-                barbellList.add(floor(tempWeight/1.25).toInt())
-                tempWeight %= 1.25
-            } else {
-                barbellList.add(0)
-            }
-
-            if (sharedPreferences.getBoolean("calibrated_collars", false)) {
-                barbellList.add(1)
-            } else {
-                barbellList.add(0)
-            }
+            val barbellList = createBarbellWeightList(convertedWeight);
 
             Log.v("AppOutput", barbellList.toString())
 
@@ -175,12 +109,85 @@ class AppOutputFragment : Fragment() {
                 plateIndex += numPlates
             }
 
+            //Slight hacky way to round closest .5
             barbellWeight = Math.round( (barbellWeight * .4) ) / .4
             convertedWeightAndUnit.text = "$weight $unit --> $barbellWeight $convertedUnit"
 
             val platesNeededTextView = view.findViewById(R.id.platesNeeded) as TextView
             platesNeededTextView.text = Html.fromHtml(platesNeededTextBuilder.toString())
         }
+    }
+
+    private fun createBarbellWeightList(convertedWeight: Double) : ArrayList<Int> {
+
+        // Initially remove weight of bar from converted weight, then halve it since this is per side
+        var tempWeight = (convertedWeight - 20)/2.0
+
+        // Barbell list is an ordered list of plate amounts to be used 25kg -> 1.25kg
+        val barbellList : ArrayList<Int> = ArrayList()
+
+        val sharedPreferences : SharedPreferences = requireContext().getSharedPreferences("Barbell", 0)
+        // Check if competition collars will be used. If so, remove 2.5 from weight as each collar weighs 2.5kg
+        if (sharedPreferences.getBoolean("calibrated_collars", false)) {
+            tempWeight -= 2.5
+        }
+
+        if (sharedPreferences.getBoolean("25kg", true)) {
+            barbellList.add(floor(tempWeight/25.0).toInt())
+            tempWeight %= 25
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("20kg", true)) {
+            barbellList.add(floor(tempWeight/20.0).toInt())
+            tempWeight %= 20
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("15kg", true)) {
+            barbellList.add(floor(tempWeight/15.0).toInt())
+            tempWeight %= 15
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("10kg", true)) {
+            barbellList.add(floor(tempWeight/10.0).toInt())
+            tempWeight %= 10
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("5kg", true)) {
+            barbellList.add(floor(tempWeight/5.0).toInt())
+            tempWeight %= 5
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("2_5kg", true)) {
+            barbellList.add(floor(tempWeight/2.5).toInt())
+            tempWeight %= 2.5
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("1_2_5kg", true)) {
+            barbellList.add(floor(tempWeight/1.25).toInt())
+            tempWeight %= 1.25
+        } else {
+            barbellList.add(0)
+        }
+
+        if (sharedPreferences.getBoolean("calibrated_collars", false)) {
+            barbellList.add(1)
+        } else {
+            barbellList.add(0)
+        }
+
+        return barbellList;
     }
 
     private fun getPlatesWeight(plateIndex: Int) : Double {
