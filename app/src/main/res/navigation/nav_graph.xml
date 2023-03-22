@@ -43,7 +43,6 @@
             android:id="@+id/action_AppOutput_to_Settings"
             app:destination="@id/SettingsFragment" />
     </fragment>
-    <!-- Add navigation from User Input Fragment to Settings, and back -->
     <fragment
         android:id="@+id/SettingsFragment"
         android:name="com.example.barbellweightcalculator.SettingsFragment"

@@ -10,7 +10,7 @@ import android.widget.CheckBox
 import com.example.barbellweightcalculator.databinding.SettingsFragmentBinding
 
 /**
- * A simple [Fragment] subclass.
+ * A [Fragment] used to display and enable/disable use of certain barbell plates & collars.
  */
 class SettingsFragment : Fragment() {
 
