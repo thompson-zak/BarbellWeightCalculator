@@ -176,7 +176,8 @@ class AppOutputFragment : Fragment() {
             }
 
             barbellWeight = Math.round( (barbellWeight * .4) ) / .4
-            convertedWeightAndUnit.text = "$weight $unit --> $barbellWeight $convertedUnit"
+            val exactUnconvertedWeight = Math.round(barbellWeight * 2.2046)
+            convertedWeightAndUnit.text = "$weight $unit --> $barbellWeight $convertedUnit ($exactUnconvertedWeight $unit)"
 
             val platesNeededTextView = view.findViewById(R.id.platesNeeded) as TextView
             platesNeededTextView.text = Html.fromHtml(platesNeededTextBuilder.toString())
